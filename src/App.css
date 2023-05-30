@@ -1,38 +1,58 @@
 .App {
-  text-align: center;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background-color: #009999;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+	padding: 5px;
+	margin: 2px;
+	font-size: 18px;
+	width: 36px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title {
+	color: white;
+	font-size: 48px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.mainBox {
+	border: 2px solid gray;
+	border-radius: 20px;
+	padding: 15px;
+	background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.timer {
+	padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.timerButtons {
+	margin: 10px;
+}
+
+.input {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;	
+}
+
+.output {
+	border: 1px solid black;
+	border-radius: 20px;
+	margin-top: 10px;
+	background-color: black;
+	color: white;
+	box-shadow: 5px 10px 10px 0px gray;
+	
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+.outputButtons {
+	margin-top: 20px;
 }

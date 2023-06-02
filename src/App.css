@@ -51,6 +51,18 @@ button {
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
+.output h1 {
+	font-size: 
+}
+
+.breakStyle {
+	color: blue;
+}
+
+.completeStyle {
+	color: red;
+}
+
 .outputButtons {
 	margin-top: 20px;
 }

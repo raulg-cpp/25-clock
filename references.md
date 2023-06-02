@@ -13,6 +13,10 @@ https://dirask.com/posts/JavaScript-measure-elapsed-time-between-setInterval-int
 
 https://www.w3schools.com/js/js_timing.asp
 
+https://www.tutorialspoint.com/How-to-delay-a-JavaScript-function-call-using-JavaScript
+
+
+
 ## Timers
 
 __Generate from scratch__:

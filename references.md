@@ -15,7 +15,8 @@ https://www.w3schools.com/js/js_timing.asp
 
 https://www.tutorialspoint.com/How-to-delay-a-JavaScript-function-call-using-JavaScript
 
-
+## Sound
+https://pixabay.com/sound-effects/search/alert/
 
 ## Timers
 
@@ -44,3 +45,12 @@ https://www.npmjs.com/package/react-countdown
 https://github.com/ndresx/react-countdown/blob/master/examples/src/CountdownApi.tsx
 
 https://codesandbox.io/s/elastic-euclid-6vnlw
+
+
+## Play sound
+
+__React component__:
+
+https://www.npmjs.com/package/use-sound
+
+https://stackoverflow.com/questions/47686345/playing-sound-in-react-js

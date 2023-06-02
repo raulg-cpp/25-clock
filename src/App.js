@@ -1,13 +1,19 @@
 /* References:
 	https://www.w3resource.com/javascript-exercises/javascript-basic-exercise-51.php
 	https://www.npmjs.com/package/react-countdown
+	https://www.npmjs.com/package/use-sound
 */
 
 import './App.css';
 import { useState } from 'react';
 import Countdown from 'react-countdown';
+import useSound from 'use-sound';
 
-// Timer adjustment
+// sound link
+import completeSfx from './sounds/complete.mp3';
+
+//=== Components ===
+
 const Timer = (props) => {
 	//=== functions ===
 	const incTime = () => {
@@ -39,50 +45,45 @@ function App() {
 	//=== state ===
 	const [breakTime, setBreakTime] = useState(1);
 	const [sessionTime, setSessionTime] = useState(1);
+	const [inSession, setInSession] = useState(true);	
+	
+	// sound
+	const [playComplete] = useSound(completeSfx);	
 	
 	//=== functions ===
 	function minToMs(value) {
 		return value * 60e3;	
 	}
 	
-	// Count down 
+	function dateFunc() {
+		return Date.now() + minToMs( inSession ? sessionTime : breakTime );
+	}
+	  		
+	//=== Count down === 
 	const renderer = ({ total, hours, minutes, seconds, completed, api }) => {
-		// === Functions ===
 		// 1. buttons
 		const playFunc = () => { api.start() };
 		const pauseFunc = () => { api.pause() };
-		const resetFunc = () => { api.stop() };
+		const resetFunc = () => { api.stop(); setInSession(true); };
   	   	
+  	   	// 2. cycle states
+  	   	if( completed ) {
+  	   		setInSession( !inSession );	
+  	   		api.stop();
+  	   		api.start();
+  	   		playComplete();	
+  	   	}
+  	   	  	   	
   	   	// 2. transition
-  		var title = "Session";
-  		var titleStyle = "";
-  			
-  		if( total > minToMs(breakTime) ) {
-  			minutes -= breakTime;
-  		} else {
-  			title = "Break";
-  			titleStyle = "breakStyle";
-  		}
-  		
-  		// 3. finished round
-  		if( completed ) {
-  			// indicate
-			title = "Pomodoro!";
-			titleStyle = "completeStyle";
-			
-			// reset timer
-			const funcComplete = () => {
-				api.stop();
-			};
-			setTimeout(funcComplete, 5000);	// Wait 5 seconds
-		}
-  	
+  		var title = inSession ? "Session" : "Break";
+  		var titleStyle = inSession ? "sessionStyle" : "breakStyle";
+  		  	  	
  		// === JSX ===
 		return ( 
 			<div>
     			{/* display output */}
     			<div className="output">
- 		    		<h2 className={titleStyle}>{title}</h2>
+ 		    		<h2 id="title" className={titleStyle}>{title}</h2>
     				<h1>{hours}:{minutes}:{seconds}</h1>
     			</div>
     			
@@ -109,7 +110,7 @@ function App() {
     		
     		{/* Timer */}
     		<Countdown
-    			date={ Date.now() + minToMs(sessionTime + breakTime) }
+    			date={ dateFunc() }
     			renderer={renderer}
     			controlled={false}
     			autoStart={false}

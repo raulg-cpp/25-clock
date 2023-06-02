@@ -15,6 +15,8 @@ https://www.w3schools.com/js/js_timing.asp
 
 https://www.tutorialspoint.com/How-to-delay-a-JavaScript-function-call-using-JavaScript
 
+https://www.w3schools.com/jsref/met_html_click.asp
+
 ## Sound
 https://pixabay.com/sound-effects/search/alert/
 

@@ -43,8 +43,8 @@ const Timer = (props) => {
 
 function App() {	
 	//=== state ===
-	const [breakTime, setBreakTime] = useState(1);
-	const [sessionTime, setSessionTime] = useState(1);
+	const [breakTime, setBreakTime] = useState(5);
+	const [sessionTime, setSessionTime] = useState(25);
 	const [inSession, setInSession] = useState(true);	
 	
 	// sound
@@ -60,18 +60,18 @@ function App() {
 	}
 	  		
 	//=== Count down === 
-	const renderer = ({ total, hours, minutes, seconds, completed, api }) => {
+	const renderer = ({ total, hours, minutes, seconds, api }) => {
 		// 1. buttons
 		const playFunc = () => { api.start() };
 		const pauseFunc = () => { api.pause() };
 		const resetFunc = () => { api.stop(); setInSession(true); };
   	   	
   	   	// 2. cycle states
-  	   	if( completed ) {
-  	   		setInSession( !inSession );	
+  	   	if( api.isCompleted() ) {
   	   		api.stop();
   	   		api.start();
-  	   		playComplete();	
+  	   		setInSession( !inSession );
+  	   		playComplete();
   	   	}
   	   	  	   	
   	   	// 2. transition

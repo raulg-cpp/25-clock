@@ -4,9 +4,7 @@
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	background-color: #009999;
-	height: 100%;
-	width: 100%;
+	min-width: 300px;
 }
 
 button {
